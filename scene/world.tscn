@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr72y2ugbww3i"]
+
+[ext_resource type="Script" uid="uid://b5q1uq5rynfww" path="res://scripts/world.gd" id="1_w4qq1"]
+[ext_resource type="PackedScene" uid="uid://ch41tyyna33oi" path="res://scene/bus_new.tscn" id="2_w4qq1"]
+[ext_resource type="PackedScene" uid="uid://pxo7lmaafdg8" path="res://Tester2.glb" id="4_m5mgf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w4qq1"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_m5mgf"]
+sky_material = SubResource("ProceduralSkyMaterial_w4qq1")
+
+[sub_resource type="Environment" id="Environment_emkrx"]
+background_mode = 2
+sky = SubResource("Sky_m5mgf")
+tonemap_mode = 2
+
+[sub_resource type="Curve3D" id="Curve3D_m5mgf"]
+closed = true
+_data = {
+"points": PackedVector3Array(-5.71719, 0, 1.83316, 5.71719, 0, -1.83316, -15.7245, 0, -16.8276, -4.53184, 0, -3.17782, 4.53184, 0, 3.17782, 18.1983, 0, -17.3798, 0.113514, 0, -2.81406, -0.113514, 0, 2.81406, 19.857, 0, 19.3721, 4.78521, 0, 1.96712, -4.78521, 0, -1.96712, -18.704, 0, 19.1146),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_outrp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_outrp"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_w4qq1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_emkrx")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_m5mgf")
+
+[node name="PathFollow3D2" parent="Path3D" instance=ExtResource("2_w4qq1")]
+transform = Transform3D(0.998108, 0, 0.058701, 0, 0.999987, 0, -0.0586999, 0, 0.998127, -21.2744, 0, 10.46)
+progress = 120.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.9589, 0)
+
+[node name="BusStop" type="Area3D" parent="." groups=["red_stop"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5604, 0.783651, -18.9351)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BusStop"]
+shape = SubResource("BoxShape3D_outrp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BusStop"]
+mesh = SubResource("BoxMesh_outrp")
+
+[node name="BusStop2" type="Area3D" parent="." groups=["yellow_stop_1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2943, 0.783651, -10.891)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BusStop2"]
+shape = SubResource("BoxShape3D_outrp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BusStop2"]
+mesh = SubResource("BoxMesh_outrp")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Tester2" parent="." instance=ExtResource("4_m5mgf")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
+
+[node name="PersonCount" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 31.0
+offset_bottom = 28.0
+text = "5"
+
+[node name="PeopleSpawnTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="PeopleSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1175, 0, -12.7922)
+
+[node name="Peoples" type="Node3D" parent="."]
+
+[connection signal="area_entered" from="BusStop" to="." method="_on_red_stop_area_entered"]
+[connection signal="area_exited" from="BusStop" to="." method="_on_red_stop_area_exited"]
+[connection signal="area_entered" from="BusStop2" to="." method="_on_yellow_stop_area_entered"]
+[connection signal="area_exited" from="BusStop2" to="." method="_on_yellow_stop_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PeopleSpawnTimer" to="." method="_on_people_spawn_timer_timeout"]

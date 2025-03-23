@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch41tyyna33oi"]
+
+[ext_resource type="Script" uid="uid://bj6vxgs18h1xf" path="res://scripts/bus.gd" id="1_oqond"]
+[ext_resource type="ArrayMesh" uid="uid://bcnenxlrvwtgi" path="res://bus.obj" id="2_v1pta"]
+[ext_resource type="PackedScene" uid="uid://bm3qt312sqc75" path="res://bus_yellow.glb" id="2_vn3c4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5mgf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2fm7"]
+size = Vector3(2.05884, 1.87897, 7.63498)
+
+[node name="PathFollow3D2" type="PathFollow3D"]
+transform = Transform3D(0.998775, 0, 0.0459794, 0, 0.999987, 0, -0.0459785, 0, 0.998794, 0, 0, 0)
+progress = 120.673
+
+[node name="Area3D" type="Area3D" parent="." groups=["bus"]]
+script = ExtResource("1_oqond")
+
+[node name="bus_yellow2" parent="Area3D" instance=ExtResource("2_vn3c4")]
+transform = Transform3D(5, 0, -4.47035e-08, 0, 5, 0, 4.47035e-08, 0, 5, 0.18418, 0, -4.00079)
+
+[node name="Bus" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_m5mgf")
+mesh = ExtResource("2_v1pta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0408936, 1.13193, -0.0795441)
+shape = SubResource("BoxShape3D_l2fm7")
+
+[node name="RayCast3D" type="RayCast3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100374, 0.8, -3.54556)
+target_position = Vector3(0, 0, -10)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast3D2" type="RayCast3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 3.72529e-09, 0, 1, 0.863886, 0.8, -3.50117)
+target_position = Vector3(5, 0, -10)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast3D3" type="RayCast3D" parent="Area3D"]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 7.45058e-09, 0, 1, -1.02089, 0.8, -3.58793)
+target_position = Vector3(-5, 0, -10)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false

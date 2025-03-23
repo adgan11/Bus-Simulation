@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://lqvkj5otbi43"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcnenxlrvwtgi" path="res://bus.obj" id="1_l2fm7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2fm7"]
+size = Vector3(2.05884, 1.87897, 7.63498)
+
+[node name="Area3D" type="Area3D"]
+
+[node name="Bus" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_l2fm7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0408936, 1.13193, -0.0795441)
+shape = SubResource("BoxShape3D_l2fm7")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://clnwypb5tkcu4"]
+
+[ext_resource type="PackedScene" uid="uid://ddggkthasqth1" path="res://uploads_files_3815538_city+vehicle+pack1.fbx" id="1_mpu8e"]
+
+[node name="uploads_files_3815538_city+vehicle+pack1" instance=ExtResource("1_mpu8e")]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bav5mm1amrulv"]
+
+[ext_resource type="Script" uid="uid://ceahh425ktbp7" path="res://scripts/persons.gd" id="1_dex1x"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wew3e"]
+
+[node name="5 Person" type="Node3D"]
+script = ExtResource("1_dex1x")
+person_count = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wew3e")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.11302)
+mesh = SubResource("CapsuleMesh_wew3e")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22355, 0, 1.11302)
+mesh = SubResource("CapsuleMesh_wew3e")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22355, 0, 0.0134768)
+mesh = SubResource("CapsuleMesh_wew3e")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24465, 0, 0.537704)
+mesh = SubResource("CapsuleMesh_wew3e")

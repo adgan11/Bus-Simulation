@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1r2y86036ock"]
+
+[ext_resource type="PackedScene" uid="uid://bavdc0u8tcfsp" path="res://chandler_3.glb" id="1_noarx"]
+[ext_resource type="PackedScene" uid="uid://ddggkthasqth1" path="res://uploads_files_3815538_city+vehicle+pack1.fbx" id="2_a0tk4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="chandler_3" parent="." instance=ExtResource("1_noarx")]
+
+[node name="uploads_files_3815538_city+vehicle+pack1" parent="." instance=ExtResource("2_a0tk4")]
