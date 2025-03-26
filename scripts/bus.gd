@@ -1,7 +1,9 @@
 extends Area3D
 
-@export var speed = 0.2
+@export var speed = 0.02
 @export var detection_distance = 3.0
+
+var people_loaded_in_current_bus = 0
 
 var moving = true
 var waiting = false
@@ -22,6 +24,8 @@ func _ready():
 
 func _process(delta):
     update_raycast_detection()
+    
+    get_parent().get_node("Label3D").text = str(people_loaded_in_current_bus)
     
     if moving and not waiting:
         path_follow.progress_ratio += speed * delta

@@ -10,11 +10,12 @@
 size = Vector3(2.05884, 1.87897, 7.63498)
 
 [node name="PathFollow3D2" type="PathFollow3D"]
-transform = Transform3D(0.998775, 0, 0.0459794, 0, 0.999987, 0, -0.0459785, 0, 0.998794, 0, 0, 0)
+transform = Transform3D(2.99683, 0, 0.137959, 0, 3, 0, -0.137959, 0, 2.99683, 0, 0, 0)
 progress = 120.673
 
 [node name="Area3D" type="Area3D" parent="." groups=["bus"]]
 script = ExtResource("1_oqond")
+detection_distance = 7.0
 
 [node name="bus_yellow2" parent="Area3D" instance=ExtResource("2_vn3c4")]
 transform = Transform3D(5, 0, -4.47035e-08, 0, 5, 0, 4.47035e-08, 0, 5, 0.18418, 0, -4.00079)
@@ -49,3 +50,7 @@ target_position = Vector3(-5, 0, -10)
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(3, -1.49012e-08, 8.88178e-16, 0, -1.31134e-07, -3, 1.49012e-08, 3, -1.31134e-07, 0.107095, 2.37044, -0.139802)
+text = "adsadad"

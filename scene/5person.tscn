@@ -6,7 +6,6 @@
 
 [node name="5 Person" type="Node3D"]
 script = ExtResource("1_dex1x")
-person_count = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_wew3e")
